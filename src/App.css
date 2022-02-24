@@ -1,0 +1,274 @@
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(60,30,53,1) 32%, rgb(4, 155, 185) 100%);
+  font-family: montserrat !important;
+}
+/* Custom CSS */
+
+/* -----1----- Form.js CSS START */
+
+.masthead {
+  min-height: 100vh;
+  position: relative;
+}
+
+.background-overlay {
+  position: absolute;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(60,30,53,1) 32%, rgba(0,212,255,1) 100%);
+  height: 100%;
+  width: 100%;
+ 
+}
+
+.insert-form {
+  background-color: white;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24) !important; */
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px !important;
+  /* max-width: 330px;
+  min-width: 330px;  */
+  margin: 15px;   
+  font-family: montserrat;
+  padding-top: 0px !important;
+}
+
+.btn-span {
+  display: block;
+  width: 100%;
+}
+
+.form-title {
+  font-size: 23px;
+  text-transform: uppercase;
+  /* color: #2c3e50; */
+  color: #1A374D;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.form-subtitle {
+  font-weight: 500 !important;
+  font-size: 14px;
+  color: #6E3CBC;
+  margin-bottom: 20px;
+}
+
+.form-header {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.form-label {
+  color: #000957;
+}
+
+.insert-btn {
+  background: #235377 !important;
+  border: #235377 !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.insert-btn:hover {
+  background: #406882 !important;
+  border: #406882 !important;
+  transition: transform 250ms linear !important;
+}
+
+.alert-insert-form {
+  font-family: montserrat;
+  padding: 15px !important;
+}
+
+.form-wrapper-container {
+  margin-top: 30px !important;
+  margin-bottom: 30px !important;
+  padding: 0px !important;
+}
+
+/* -----1----- Form.js CSS END */
+
+/* -----2----- Home.js CSS START */
+.nav-component {
+  margin-right: 15px;
+}
+
+.nav-component-form {
+  margin-right: 15px;
+  padding-bottom: 0px !important;
+}
+
+.nav-componet-logout:hover {
+  cursor: pointer !important;
+}
+/* -----2----- Home.js CSS END */
+
+/* -----3----- Table.js CSS START */
+.filter-section {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.table-filter-btn {
+  background: #235377 !important;
+  border: #235377 !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.table-filter-btn:hover {
+  background: #406882 !important;
+  border: #406882 !important;
+  transition: transform 250ms linear !important;
+}
+
+.home-wrapper {
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(60,30,53,1) 32%, rgb(4, 155, 185) 100%);
+}
+
+/* .table-wrapper {
+  background: white;
+} */
+
+.filter-form {
+  background: white;
+  box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51);
+-webkit-box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51);
+-moz-box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51);
+}
+
+.table-edit {
+  background: white;
+  /* box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51) !important;
+  -webkit-box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51) !important;
+  -moz-box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51) !important; */
+  box-shadow: -2px 12px 27px 1px rgba(0,0,0,0.61);
+-webkit-box-shadow: -2px 12px 27px 1px rgba(0,0,0,0.61);
+-moz-box-shadow: -2px 12px 27px 1px rgba(0,0,0,0.61);
+  /* border: white !important; */
+}
+
+.table-load-btn {
+  /* padding-top: 8px !important; */
+  background: #277da1 !important;
+  border: #277da1 !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.table-load-btn:hover {
+  background: #33a2d1 !important;
+  border: #33a2d1 !important;
+  transition: transform 250ms linear !important;
+}
+
+.table-refresh-btn {
+  background: #4a4e69 !important;
+  border: #4a4e69 !important;
+  transition: all 0.5s ease-in-out !important;
+  margin-bottom: 5px;
+}
+
+.table-refresh-btn:hover {
+  background: #606792 !important;
+  border: #606792 !important;
+  transition: transform 250ms linear !important;
+}
+
+.refresh-icon {
+  padding-right: 5px;
+}
+
+
+.table-modal-container {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.MuiBox-root {
+  padding: 0px !important;
+}
+
+.update-form-title {
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #1A374D;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.table-delete-btn {
+  margin-right: 2px ;
+}
+
+
+/* -----3----- Table.js CSS END */
+
+/* -----4----- FormTag.js CSS END */
+.backdrop {
+  /* background: #4C3F91; */
+  /* background: #398AB9; */
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(60,30,53,1) 32%, rgb(4, 155, 185) 100%);
+  /* background: blue; */
+}
+
+.col-form-tag {
+  padding: 0px !important;
+}
+
+.nav-bar-edit {
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  box-shadow: -2px 7px 18px 0px rgba(255,255,255,0.15);
+  background: #0F0E0E;
+  color: white;
+  padding: 15px !important;
+}
+
+.nav-user-name {
+  padding-right: 15px;
+}
+
+.nav-link-btn {
+  padding-top: 8px !important;
+  background: #235377 !important;
+  border: #235377 !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+.nav-link-btn:hover {
+  background: #406882 !important;
+  border: #406882 !important;
+  transition: transform 250ms linear !important;
+}
+
+.nav-logout {
+  padding-left: 15px !important;
+  padding-top: 5px;
+}
+
+/* -----4----- FormTag.js CSS END */
+
+
+/* ------------- Login Form START ------------- */
+.login-form {
+  background: white;
+  box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51);
+-webkit-box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51);
+-moz-box-shadow: -1px 2px 14px 5px rgba(0,0,0,0.51);
+}
+
+.login-form-header {
+  text-transform: uppercase;
+  color: #1A374D;
+}
+/* ------------- Login Form END ------------- */
+
+
+/* .table-wrap-section {
+  overflow: hidden !important;
+} */
+
+/* .table-responsive { overflow-x: initial !important; } */
