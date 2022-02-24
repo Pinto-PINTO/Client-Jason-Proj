@@ -47,27 +47,9 @@ export default function Home() {
       </Navbar>
       {/* ------------- Navigation Bar END ------------- */}
 
-
-      {/* -------- Rendring the name of user dynamically --------*/}
-      {/* <h1>Welcome To Home</h1>
-      <br></br>
-      <h1>{user && user.email}
-      </h1> */}
-
-      {/* -------- Importing the Table Component --------*/}
-      {/* <Container>
-        <Row>
-          <Col>
-            <TableTag />
-          </Col>
-        </Row>
-      </Container> */}
-
       <div>
         <TableTag />
       </div>
-
-
 
     </div>
   )

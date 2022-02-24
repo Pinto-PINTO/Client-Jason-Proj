@@ -70,10 +70,7 @@ export default function Login() {
       <div>
         {message.error && (
           <Alert variant="danger" onClose={() => setMessage({ error: false })} dismissible>
-            <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-            <p>
-              {message.msg}
-            </p>
+            <Alert.Heading className="text-center">The email and password you entered did not match our records.</Alert.Heading>
           </Alert>
 
         )}

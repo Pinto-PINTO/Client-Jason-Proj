@@ -436,7 +436,7 @@ const BooksList = ({ getBookId }) => {
 
             {/* -------------- Table START -------------- */}
             {/* <div className="table-responsive"></div> */}
-            <div className="">
+            <div className="table-responsive">
                 <Table striped size="sm" className="table table-bordered table-edit">
                     <thead>
                         <tr className="text-center p-2">
@@ -870,7 +870,7 @@ const BooksList = ({ getBookId }) => {
             <Button
                 variant="secondary"
                 onClick={(e) => LoadMore()}
-                className="table-load-btn"
+                className="table-load-btn mt-3 mb-4"
             >
                 Load More
             </Button>

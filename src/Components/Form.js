@@ -144,8 +144,8 @@ const AddBook = ({ id, setBookId }) => {
                 {/* --------------Form START -------------- */}
                 <Form onSubmit={handleSubmit} className='insert-form p-4 p-sm-4 m-0 rounded'>
                     <div className="form-header">
-                        <h1 class="form-title text-center">Company Registeration</h1>
-                        <h3 class="form-subtitle text-center">Tell something about the company</h3>
+                        <h1 className="form-title text-center">Company Registeration</h1>
+                        <h3 className="form-subtitle text-center">Tell something about the company</h3>
                     </div>
                     {/* <div class="row header">
                         <h1>CONTACT US &nbsp;</h1>
