@@ -387,7 +387,7 @@ const AddBook = ({ id, setBookId }) => {
                         <Form.Label>Contact Number</Form.Label>
                         <InputGroup>
                             <Form.Control
-                                type="tel"
+                                type="text"
                                 placeholder="Contact Number"
                                 value={contact}
                                 onChange={(e) => setContact(e.target.value)}
@@ -399,7 +399,7 @@ const AddBook = ({ id, setBookId }) => {
                         <Form.Label>Email</Form.Label>
                         <InputGroup>
                             <Form.Control
-                                type="email"
+                                type="text"
                                 placeholder="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
@@ -412,7 +412,7 @@ const AddBook = ({ id, setBookId }) => {
                             <Form.Label>House Number</Form.Label>
                             <InputGroup>
                                 <Form.Control
-                                    type="number"
+                                    type="text"
                                     placeholder="Number"
                                     value={houseNo}
                                     onChange={(e) => setHouseNo(e.target.value)}
@@ -463,7 +463,7 @@ const AddBook = ({ id, setBookId }) => {
                         <Form.Label>Postal Code</Form.Label>
                         <InputGroup>
                             <Form.Control
-                                type="number"
+                                type="text"
                                 placeholder="Postal Code"
                                 value={postalCode}
                                 onChange={(e) => setPostalCode(e.target.value)}

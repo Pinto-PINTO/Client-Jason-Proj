@@ -743,7 +743,7 @@ const BooksList = ({ getBookId }) => {
                                                                     <Form.Label>Contact Number</Form.Label>
                                                                     <InputGroup>
                                                                         <Form.Control
-                                                                            type="tel"
+                                                                            type="text"
                                                                             placeholder="Contact Number"
                                                                             value={econtact}
                                                                             onChange={(e) => setEContact(e.target.value)}
@@ -756,7 +756,7 @@ const BooksList = ({ getBookId }) => {
                                                                     <Form.Label>Email</Form.Label>
                                                                     <InputGroup>
                                                                         <Form.Control
-                                                                            type="email"
+                                                                            type="text"
                                                                             placeholder="Email"
                                                                             value={eemail}
                                                                             onChange={(e) => setEEmail(e.target.value)}
@@ -771,7 +771,7 @@ const BooksList = ({ getBookId }) => {
                                                                     <Form.Label>House Number</Form.Label>
                                                                     <InputGroup>
                                                                         <Form.Control
-                                                                            type="number"
+                                                                            type="text"
                                                                             placeholder="Number"
                                                                             value={ehouseNo}
                                                                             onChange={(e) => setEHouseNo(e.target.value)}
@@ -825,7 +825,7 @@ const BooksList = ({ getBookId }) => {
                                                                     <Form.Label>Postal Code</Form.Label>
                                                                     <InputGroup>
                                                                         <Form.Control
-                                                                            type="number"
+                                                                            type="text"
                                                                             placeholder="Postal Code"
                                                                             value={epostalCode}
                                                                             onChange={(e) => setEPostalCode(e.target.value)}
