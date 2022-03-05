@@ -28,7 +28,7 @@ class BookDataService {
        // 4) Fetch All Books in db
        getAllBooks = () => {
 
-              const q = query(bookCollectionRef, limit(20))
+              const q = query(bookCollectionRef, limit(5))
               return getDocs(q);
        };
 
