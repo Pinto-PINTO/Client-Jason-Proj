@@ -25,7 +25,7 @@ const AddBook = ({ id, setBookId }) => {
     const [district, setDistrict] = useState("");
     const [city, setCity] = useState("");
     const [postalCode, setPostalCode] = useState("");
-    const [country, setCountry] = useState("");
+    // const [country, setCountry] = useState("");
 
 
     // State to handle error messages
@@ -37,7 +37,7 @@ const AddBook = ({ id, setBookId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();  // prevents the page refreshing on submit
         setMessage("");
-        if (name === "" || description === "" || contact === "" || email === "" || category === "" || subCategory === "" || houseNo === "" || street === "" || district === "" || city === "" || postalCode === "" || country === "") {
+        if (name === "" || description === "" || contact === "" || email === "" || category === "" || subCategory === "" || houseNo === "" || street === "" || district === "" || city === "" || postalCode === "") {
             setMessage({ error: true, msg: "All fields are mandatory!" });
             return;
         }
@@ -53,7 +53,6 @@ const AddBook = ({ id, setBookId }) => {
             district,
             city,
             postalCode,
-            country,
         };
         console.log(newBook);
 
@@ -84,7 +83,6 @@ const AddBook = ({ id, setBookId }) => {
         setDistrict("");
         setCity("");
         setPostalCode("");
-        setCountry("");
     };
 
     // 2) Update
@@ -106,7 +104,6 @@ const AddBook = ({ id, setBookId }) => {
             setDistrict(docSnap.data().district);
             setCity(docSnap.data().city);
             setPostalCode(docSnap.data().postalCode);
-            setCountry(docSnap.data().country);
 
         } catch (err) {
             setMessage({ error: true, msg: err.message });
@@ -471,7 +468,7 @@ const AddBook = ({ id, setBookId }) => {
                         </InputGroup>
                     </Form.Group>
 
-                    <Form.Group className="mb-4" controlId="formBookAuthor">
+                    {/* <Form.Group className="mb-4" controlId="formBookAuthor">
                         <Form.Label>Country</Form.Label>
                         <InputGroup>
                             <Form.Control
@@ -481,7 +478,7 @@ const AddBook = ({ id, setBookId }) => {
                                 onChange={(e) => setCountry(e.target.value)}
                             />
                         </InputGroup>
-                    </Form.Group>
+                    </Form.Group> */}
                     <div className="d-grid gap-2">
                         <Button variant="primary" type="Submit" className="insert-btn">
                             Insert

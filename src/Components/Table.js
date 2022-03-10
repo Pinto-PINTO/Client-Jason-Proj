@@ -47,8 +47,6 @@ const BooksList = ({ getBookId }) => {
     const [edistrict, setEDistrict] = useState("");
     const [ecity, setECity] = useState("");
     const [epostalCode, setEPostalCode] = useState("");
-    const [ecountry, setECountry] = useState("");
-
 
     const [currentId, setCurrentId] = useState("");
 
@@ -84,7 +82,6 @@ const BooksList = ({ getBookId }) => {
         setEDistrict(docSnap.data().district);
         setECity(docSnap.data().city);
         setEPostalCode(docSnap.data().postalCode);
-        setECountry(docSnap.data().country);
 
     }
 
@@ -103,7 +100,6 @@ const BooksList = ({ getBookId }) => {
             district: edistrict,
             city: ecity,
             postalCode: epostalCode,
-            country: ecountry,
         };
 
         console.log(currentId);
@@ -452,7 +448,6 @@ const BooksList = ({ getBookId }) => {
                             <th>City</th>
                             <th>District</th>
                             <th>P/Code</th>
-                            <th>Country</th>
                             <th>Edit/Delete</th>
                         </tr>
                     </thead>
@@ -472,7 +467,6 @@ const BooksList = ({ getBookId }) => {
                                     <td>{doc.city}</td>
                                     <td>{doc.district}</td>
                                     <td>{doc.postalCode}</td>
-                                    <td>{doc.country}</td>
                                     <td>
                                         <Button
                                             variant="danger"
@@ -832,20 +826,7 @@ const BooksList = ({ getBookId }) => {
                                                                         />
                                                                     </InputGroup>
                                                                 </Form.Group>
-                                                            </Col>
-                                                            <Col>
-                                                                <Form.Group className="mb-4" controlId="formBookAuthor">
-                                                                    <Form.Label>Country</Form.Label>
-                                                                    <InputGroup>
-                                                                        <Form.Control
-                                                                            type="text"
-                                                                            placeholder="Country"
-                                                                            value={ecountry}
-                                                                            onChange={(e) => setECountry(e.target.value)}
-                                                                        />
-                                                                    </InputGroup>
-                                                                </Form.Group>
-                                                            </Col>
+                                                            </Col>        
                                                         </Row>
 
                                                         <div className="d-grid gap-2">
