@@ -25,7 +25,7 @@ const AddBook = ({ id, setBookId }) => {
     const [district, setDistrict] = useState("");
     const [city, setCity] = useState("");
     const [postalCode, setPostalCode] = useState("");
-    // const [country, setCountry] = useState("");
+    const [notes, setNotes] = useState("");
 
 
     // State to handle error messages
@@ -37,7 +37,7 @@ const AddBook = ({ id, setBookId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();  // prevents the page refreshing on submit
         setMessage("");
-        if (name === "" || description === "" || contact === "" || email === "" || category === "" || subCategory === "" || houseNo === "" || street === "" || district === "" || city === "" || postalCode === "") {
+        if (name === "" || description === "" || contact === "" || email === "" || category === "" || subCategory === "" || houseNo === "" || street === "" || district === "" || city === "" || postalCode === "" || notes === "") {
             setMessage({ error: true, msg: "All fields are mandatory!" });
             return;
         }
@@ -53,6 +53,7 @@ const AddBook = ({ id, setBookId }) => {
             district,
             city,
             postalCode,
+            notes,
         };
         console.log(newBook);
 
@@ -83,6 +84,7 @@ const AddBook = ({ id, setBookId }) => {
         setDistrict("");
         setCity("");
         setPostalCode("");
+        setNotes("");
     };
 
     // 2) Update
@@ -104,6 +106,7 @@ const AddBook = ({ id, setBookId }) => {
             setDistrict(docSnap.data().district);
             setCity(docSnap.data().city);
             setPostalCode(docSnap.data().postalCode);
+            setNotes(docSnap.data().notes);
 
         } catch (err) {
             setMessage({ error: true, msg: err.message });
@@ -468,17 +471,18 @@ const AddBook = ({ id, setBookId }) => {
                         </InputGroup>
                     </Form.Group>
 
-                    {/* <Form.Group className="mb-4" controlId="formBookAuthor">
-                        <Form.Label>Country</Form.Label>
+                    <Form.Group className="mb-4" controlId="formBookAuthor">
+                        <Form.Label>Notes</Form.Label>
                         <InputGroup>
                             <Form.Control
                                 type="text"
-                                placeholder="Country"
-                                value={country}
-                                onChange={(e) => setCountry(e.target.value)}
+                                placeholder="Notes"
+                                value={notes}
+                                onChange={(e) => setNotes(e.target.value)}
                             />
                         </InputGroup>
-                    </Form.Group> */}
+                    </Form.Group>
+
                     <div className="d-grid gap-2">
                         <Button variant="primary" type="Submit" className="insert-btn">
                             Insert

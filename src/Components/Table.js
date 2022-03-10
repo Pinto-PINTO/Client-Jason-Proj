@@ -46,6 +46,7 @@ const BooksList = ({ getBookId }) => {
     const [edistrict, setEDistrict] = useState("");
     const [ecity, setECity] = useState("");
     const [epostalCode, setEPostalCode] = useState("");
+    const [enotes, setENotes] = useState("");
 
     const [currentId, setCurrentId] = useState("");
 
@@ -81,6 +82,7 @@ const BooksList = ({ getBookId }) => {
         setEDistrict(docSnap.data().district);
         setECity(docSnap.data().city);
         setEPostalCode(docSnap.data().postalCode);
+        setENotes(docSnap.data().notes);
 
     }
 
@@ -99,6 +101,7 @@ const BooksList = ({ getBookId }) => {
             district: edistrict,
             city: ecity,
             postalCode: epostalCode,
+            notes: enotes,
         };
 
         console.log(currentId);
@@ -437,6 +440,7 @@ const BooksList = ({ getBookId }) => {
                             <th>City</th>
                             <th>District</th>
                             <th>P/Code</th>
+                            <th>Notes</th>
                             <th>Edit/Delete</th>
                         </tr>
                     </thead>
@@ -456,12 +460,12 @@ const BooksList = ({ getBookId }) => {
                                     <td>{doc.city}</td>
                                     <td>{doc.district}</td>
                                     <td>{doc.postalCode}</td>
+                                    <td>{doc.notes}</td>
                                     <td>
                                         <Button
                                             variant="danger"
-                                            className="delete"
-                                            onClick={(e) => deleteHandler(doc.id)}
                                             className="table-delete-btn"
+                                            onClick={(e) => deleteHandler(doc.id)}
                                         >
                                             <i class="bi bi-trash3"></i>
                                         </Button>
@@ -812,6 +816,19 @@ const BooksList = ({ getBookId }) => {
                                                                             placeholder="Postal Code"
                                                                             value={epostalCode}
                                                                             onChange={(e) => setEPostalCode(e.target.value)}
+                                                                        />
+                                                                    </InputGroup>
+                                                                </Form.Group>
+                                                            </Col>
+                                                            <Col>
+                                                                <Form.Group className="mb-3" controlId="formBookTitle">
+                                                                    <Form.Label>Notes</Form.Label>
+                                                                    <InputGroup>
+                                                                        <Form.Control
+                                                                            type="text"
+                                                                            placeholder="Notes"
+                                                                            value={enotes}
+                                                                            onChange={(e) => setENotes(e.target.value)}
                                                                         />
                                                                     </InputGroup>
                                                                 </Form.Group>
