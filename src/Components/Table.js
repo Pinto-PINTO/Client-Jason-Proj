@@ -27,7 +27,6 @@ const BooksList = ({ getBookId }) => {
 
     // Filter States
     const [companyName, setcompanyName] = useState("");
-    const [country, setcountry] = useState("");
     const [city, setcity] = useState("");
     const [district, setdistrict] = useState("");
     const [street, setstreet] = useState("");
@@ -112,11 +111,8 @@ const BooksList = ({ getBookId }) => {
 
     //Filter Functions
     const Filter = async () => {
-        //console.log(companyName,country,city,district,street,postalCode,category,subCategory);
 
-
-
-        const data = await BookDataService.Filter(companyName, country, city, district, street, postalCode, category, subCategory);
+        const data = await BookDataService.Filter(companyName, city, district, street, postalCode, category, subCategory);
         console.log(data.docs);
         setlastDoc(data.docs[data.docs.length - 1])
         console.log("LAST DOC ", lastDoc)
@@ -125,7 +121,7 @@ const BooksList = ({ getBookId }) => {
     }
 
     const LoadMore = async () => {
-        const data = await BookDataService.GetNext(companyName, country, city, district, street, postalCode, category, subCategory, lastDoc);
+        const data = await BookDataService.GetNext(companyName, city, district, street, postalCode, category, subCategory, lastDoc);
         setlastDoc(data.docs[data.docs.length - 1])
         //setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         setBooks((books) => [...books, ...data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))])
@@ -168,14 +164,7 @@ const BooksList = ({ getBookId }) => {
                                 placeholder="Company Name"
                                 onChange={(e) => { setcompanyName(e.target.value) }}
                             />
-                        </Col>
-                        <Col>
-                            <Form.Control
-                                type="text"
-                                placeholder="Country"
-                                onChange={(e) => { setcountry(e.target.value) }}
-                            />
-                        </Col>
+                        </Col>                    
                     </Row>
                     <Row className='mt-3'>
                         <Col>

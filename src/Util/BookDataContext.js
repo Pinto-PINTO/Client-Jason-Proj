@@ -40,9 +40,9 @@ class BookDataService {
 
 
 
-       //testing method
+       // ------------- Filter Logic START -------------
 
-       Filter = (companyName, country, city, district, street, postalCode, category, subCategory) => {
+       Filter = (companyName, city, district, street, postalCode, category, subCategory) => {
 
 
 
@@ -50,9 +50,6 @@ class BookDataService {
 
               if (companyName !== "") {
                      q = query(q, where("name", "==", companyName))
-              }
-              if (country !== "") {
-                     q = query(q, where("country", "==", country))
               }
               if (city !== "") {
                      q = query(q, where("city", "==", city))
@@ -82,16 +79,15 @@ class BookDataService {
               return getDocs(q);
        }
 
+       // ------------- Filter Logic END -------------
 
-       GetNext = (companyName, country, city, district, street, postalCode, category, subCategory, lastDoc) => {
+
+       GetNext = (companyName,city, district, street, postalCode, category, subCategory, lastDoc) => {
 
               let q = query(bookCollectionRef)
 
               if (companyName !== "") {
                      q = query(q, where("name", "==", companyName))
-              }
-              if (country !== "") {
-                     q = query(q, where("country", "==", country))
               }
               if (city !== "") {
                      q = query(q, where("city", "==", city))
