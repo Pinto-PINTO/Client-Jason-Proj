@@ -117,6 +117,7 @@ const BooksList = ({ getBookId }) => {
 
         const data = await BookDataService.Filter(companyName, city, district, street, postalCode, category, subCategory);
         console.log(data.docs);
+        // console.log("Results: ", data.docs.length);
         setlastDoc(data.docs[data.docs.length - 1])
         console.log("LAST DOC ", lastDoc)
 
@@ -129,6 +130,19 @@ const BooksList = ({ getBookId }) => {
         //setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         setBooks((books) => [...books, ...data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))])
     }
+
+
+
+    // ----------------------- Total Search Results Function START -----------------------
+
+    const TotalResults = async () => {
+
+        const dataResults = await BookDataService.Results(companyName, city, district, street, postalCode, category, subCategory);
+        console.log("Results: ", dataResults.docs.length);
+    }
+
+    // ----------------------- Total Search Results Function END -----------------------
+
 
 
     // 1) Fetch all books as the page is loaded (run only once)
@@ -167,7 +181,7 @@ const BooksList = ({ getBookId }) => {
                                 placeholder="Company Name"
                                 onChange={(e) => { setcompanyName(e.target.value) }}
                             />
-                        </Col>                    
+                        </Col>
                     </Row>
                     <Row className='mt-3'>
                         <Col>
@@ -400,7 +414,7 @@ const BooksList = ({ getBookId }) => {
                     </Row>
                     <Row className='mt-3'>
                         <Col className="d-grid gap-2">
-                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter() }}>
+                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter(); TotalResults() }}>
                                 FILTER
                             </Button>
                         </Col>
@@ -416,8 +430,12 @@ const BooksList = ({ getBookId }) => {
 
             <div className="d-flex mb-2">
                 <Button className="table-refresh-btn" variant="dark edit" onClick={getBooks}>
-                <i className="bi bi-arrow-clockwise refresh-icon"></i> Refresh Table
+                    <i className="bi bi-arrow-clockwise refresh-icon"></i> Refresh Table
                 </Button>
+            </div>
+
+            <div className="d-flex flex-row-reverse">
+                <div className="p-2">Results: </div>
             </div>
 
             {/* -------------- Refresh Btn END -------------- */}
@@ -832,7 +850,7 @@ const BooksList = ({ getBookId }) => {
                                                                         />
                                                                     </InputGroup>
                                                                 </Form.Group>
-                                                            </Col>        
+                                                            </Col>
                                                         </Row>
 
                                                         <div className="d-grid gap-2">
