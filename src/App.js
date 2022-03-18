@@ -9,13 +9,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TableTag from './Components/TableTag';
 import FormTag from './Components/FormTag';
 
+import ScrollToTop from "./Components/ScrollToTop"
+
 
 
 function App() {
   return (
 
     <Router>
-
       <UserAuthContextProvider>
         <Routes>
 
@@ -24,15 +25,12 @@ function App() {
           <Route path='/form' element={<ProtectedRoute><FormTag /></ProtectedRoute>} />
           {/* <Route path='*' element={<TableTag />} /> */}
 
-
         </Routes>
 
       </UserAuthContextProvider>
 
-
-      <div className="App">
-
-      </div>
+      <ScrollToTop />
+      
     </Router>
 
   );
