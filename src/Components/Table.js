@@ -27,8 +27,10 @@ const BooksList = ({ getBookId }) => {
 
     // Filter States
     const [companyName, setcompanyName] = useState("");
-    const [city, setcity] = useState("");
-    const [district, setdistrict] = useState("");
+    const [Ndistrict, setNDistrict] = useState("");
+    const [Ncity, setNCity] = useState("");
+    // const [city, setcity] = useState("");
+    // const [district, setdistrict] = useState("");
     const [street, setstreet] = useState("");
     const [postalCode, setpostalCode] = useState("")
     const [lastDoc, setlastDoc] = useState();
@@ -43,8 +45,8 @@ const BooksList = ({ getBookId }) => {
     const [esubCategory, setESubCategory] = useState("");
     const [ehouseNo, setEHouseNo] = useState("");
     const [estreet, setEStreet] = useState("");
-    const [edistrict, setEDistrict] = useState("");
-    const [ecity, setECity] = useState("");
+    // const [edistrict, setEDistrict] = useState("");
+    // const [ecity, setECity] = useState("");
     const [epostalCode, setEPostalCode] = useState("");
     const [enotes, setENotes] = useState("");
 
@@ -119,7 +121,7 @@ const BooksList = ({ getBookId }) => {
     //Filter Functions
     const Filter = async () => {
 
-        const data = await BookDataService.Filter(companyName, city, district, street, postalCode, category, subCategory);
+        const data = await BookDataService.Filter(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory);
         console.log(data.docs);
         // console.log("Results: ", data.docs.length);
         setlastDoc(data.docs[data.docs.length - 1])
@@ -129,7 +131,7 @@ const BooksList = ({ getBookId }) => {
     }
 
     const LoadMore = async () => {
-        const data = await BookDataService.GetNext(companyName, city, district, street, postalCode, category, subCategory, lastDoc);
+        const data = await BookDataService.GetNext(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory, lastDoc);
         setlastDoc(data.docs[data.docs.length - 1])
         //setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         setBooks((books) => [...books, ...data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))])
@@ -189,20 +191,371 @@ const BooksList = ({ getBookId }) => {
                     </Row>
                     <Row className='mt-3'>
                         <Col>
-                            <Form.Control
-                                type="text"
-                                placeholder="City"
-                                onChange={(e) => { setcity(e.target.value) }}
-                            />
+                            {/* -------------- Main City Dropdown START -------------- */}
+                            <FormControl fullWidth className="mt-1">
+                                <InputLabel id="demo-simple-select-label">City</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                    value={Ncity}
+                                    label="City"
+                                    onChange={(e) => { setNCity(e.target.value) }}
+                                >
+                                    <MenuItem value={"Almaty"}>Almaty</MenuItem>
+                                    <MenuItem value={"Nur-Sultan"}>Nur-Sultan</MenuItem>
+                                    <MenuItem value={"Shymkent"}>Shymkent</MenuItem>
+                                    <MenuItem value={"Aktobe"}>Aktobe</MenuItem>
+                                    <MenuItem value={"Taraz"}>Taraz</MenuItem>
+                                    <MenuItem value={"Karagandy"}>Karagandy</MenuItem>
+                                    <MenuItem value={"Pavlodar"}>Pavlodar</MenuItem>
+                                    <MenuItem value={"Almaty Qalasy"}>Almaty Qalasy</MenuItem>
+                                    <MenuItem value={"Akmola"}>Akmola</MenuItem>
+                                    <MenuItem value={"Atyray"}>Atyray</MenuItem>
+                                    <MenuItem value={"Turkistan"}>Turkistan</MenuItem>
+                                    <MenuItem value={"Kyzylorda"}>Kyzylorda</MenuItem>
+                                    <MenuItem value={"North Kazakhstan"}>North Kazakhstan</MenuItem>
+                                    <MenuItem value={"East Kazakhstan"}>East Kazakhstan</MenuItem>
+                                    <MenuItem value={"Jambyl"}>Jambyl</MenuItem>
+                                    <MenuItem value={"Mangystau"}>Mangystau</MenuItem>
+                                    <MenuItem value={"Kostanay"}>Kostanay</MenuItem>
+
+                                </Select>
+                            </FormControl>
+                            {/* -------------- Main City Dropdown END -------------- */}
                         </Col>
                         <Col>
-                            <Form.Control
-                                type="text"
-                                placeholder="District"
-                                onChange={(e) => { setdistrict(e.target.value) }}
-                            />
+                            {/* -------------- District Dropdown START -------------- */}
+                            <FormControl fullWidth className="mt-1">
+                                <InputLabel id="demo-simple-select-label">District</InputLabel>
+                                {
+                                    Ncity === "Almaty" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Alakol"}>Alakol</MenuItem>
+                                        <MenuItem value={"Aksu"}>Aksu</MenuItem>
+                                        <MenuItem value={"Balkhash"}>Balkhash</MenuItem>
+                                        <MenuItem value={"Enbekshikazakh"}>Enbekshikazakh</MenuItem>
+                                        <MenuItem value={"BakeEskeldiries"}>Eskeldi</MenuItem>
+                                        <MenuItem value={"Ile"}>Ile</MenuItem>
+                                        <MenuItem value={"Zhambyl"}>Zhambyl</MenuItem>
+                                        <MenuItem value={"Raiymbek"}>Raiymbek</MenuItem>
+                                        <MenuItem value={"Kerbulak"}>Kerbulak</MenuItem>
+                                        <MenuItem value={"Koksu"}>Koksu</MenuItem>
+                                        <MenuItem value={"Panfilov"}>Panfilov</MenuItem>
+                                        <MenuItem value={"Kapchagay"}>Kapchagay</MenuItem>
+                                        <MenuItem value={"Karasay"}>Karasay</MenuItem>
+                                        <MenuItem value={"Karatal"}>Karatal</MenuItem>
+                                        <MenuItem value={"Sarkand"}>Sarkand</MenuItem>
+                                        <MenuItem value={"Taldykorgan"}>Taldykorgan</MenuItem>
+                                        <MenuItem value={"Talgar"}>Talgar</MenuItem>
+                                        <MenuItem value={"Tekeli"}>Tekeli</MenuItem>
+                                        <MenuItem value={"Uygur"}>Uygur</MenuItem>
+                                    </Select> : Ncity === "Nur-Sultan" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Almaty"}>Almaty</MenuItem>
+                                        <MenuItem value={"Esil"}>Esil</MenuItem>
+                                        <MenuItem value={"Saryarqa"}>Saryarqa</MenuItem>
+                                        <MenuItem value={"Baikonyr"}>Baikonyr</MenuItem>
+                                        <MenuItem value={"Tselinogradsky"}>Tselinogradsky</MenuItem>
+                                    </Select> : Ncity === "Shymkent" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Abai"}>Abai</MenuItem>
+                                        <MenuItem value={"Al Farabi"}>Al Farabi</MenuItem>
+                                        <MenuItem value={"Enbekshi"}>Enbekshi</MenuItem>
+                                        <MenuItem value={"Qaratay"}>Qaratay</MenuItem>
+                                    </Select> : Ncity === "Aktobe" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Ayteke B"}>Ayteke B</MenuItem>
+                                        <MenuItem value={"Alga"}>Alga</MenuItem>
+                                        <MenuItem value={"Aktobe"}>Aktobe</MenuItem>
+                                        <MenuItem value={"Bayganin"}>Bayganin</MenuItem>
+                                        <MenuItem value={"Khromtau"}>Khromtau</MenuItem>
+                                        <MenuItem value={"Martuk"}>Martuk</MenuItem>
+                                        <MenuItem value={"Mugalzhar"}>Mugalzhar</MenuItem>
+                                        <MenuItem value={"Oiyl"}>Oiyl</MenuItem>
+                                        <MenuItem value={"Kargaly"}>Kargaly</MenuItem>
+                                        <MenuItem value={"Kobda"}>Kobda</MenuItem>
+                                        <MenuItem value={"Shalkar"}>Shalkar</MenuItem>
+                                        <MenuItem value={"Temir"}>Temir</MenuItem>
+                                        <MenuItem value={"Yrgyz"}>Yrgyz</MenuItem>
+                                    </Select> : Ncity === "Taraz" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"-"}>-</MenuItem>
+                                    </Select> : Ncity === "Karagandy" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Abay"}>Abay</MenuItem>
+                                        <MenuItem value={"Aktogav"}>Aktogav</MenuItem>
+                                        <MenuItem value={"Balkhash"}>Balkhash</MenuItem>
+                                        <MenuItem value={"Bukhar-Zhyrau"}>Bukhar-Zhyrau</MenuItem>
+                                        <MenuItem value={"Zhanaarka"}>Zhanaarka</MenuItem>
+                                        <MenuItem value={"Jezkazgan"}>Jezkazgan</MenuItem>
+                                        <MenuItem value={"Nura"}>Nura</MenuItem>
+                                        <MenuItem value={"Osakarov"}>Osakarov</MenuItem>
+                                        <MenuItem value={"Priozersk"}>Priozersk</MenuItem>
+                                        <MenuItem value={"Karaganda"}>Karaganda</MenuItem>
+                                        <MenuItem value={"Karazhal"}>Karazhal</MenuItem>
+                                        <MenuItem value={"Karkaraly"}>Karkaraly</MenuItem>
+                                        <MenuItem value={"Saran"}>Saran</MenuItem>
+                                        <MenuItem value={"Satbayev"}>Satbayev</MenuItem>
+                                        <MenuItem value={"Shakhtinsk"}>Shakhtinsk</MenuItem>
+                                        <MenuItem value={"Shet"}>Shet</MenuItem>
+                                        <MenuItem value={"Temirtau"}>Temirtau</MenuItem>
+                                        <MenuItem value={"Ulytau"}>Ulytau</MenuItem>
+                                    </Select> : Ncity === "Pavlodar" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Akkuli"}>Akkuli</MenuItem>
+                                        <MenuItem value={"Aksu"}>Aksu</MenuItem>
+                                        <MenuItem value={"Aktogay"}>Aktogay</MenuItem>
+                                        <MenuItem value={"Bayanaul"}>Bayanaul</MenuItem>
+                                        <MenuItem value={"Ekibastuz"}>Ekibastuz</MenuItem>
+                                        <MenuItem value={"Ertis"}>Ertis</MenuItem>
+                                        <MenuItem value={"Zhelezin"}>Zhelezin</MenuItem>
+                                        <MenuItem value={"May"}>May</MenuItem>
+                                        <MenuItem value={"Pavlodar"}>Pavlodar</MenuItem>
+                                        <MenuItem value={"Sharbakty"}>Sharbakty</MenuItem>
+                                        <MenuItem value={"Kashyr"}>Kashyr</MenuItem>
+                                        <MenuItem value={"Uspen"}>Uspen</MenuItem>
+                                    </Select> : Ncity === "Almaty Qalasy" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Alatau"}>Alatau</MenuItem>
+                                        <MenuItem value={"Almaly"}>Almaly</MenuItem>
+                                        <MenuItem value={"Auezov"}>Auezov</MenuItem>
+                                        <MenuItem value={"Bostandyk"}>Bostandyk</MenuItem>
+                                        <MenuItem value={"Jetysu"}>Jetysu</MenuItem>
+                                        <MenuItem value={"Medau"}>Medau</MenuItem>
+                                        <MenuItem value={"Nauryzbay"}>Nauryzbay</MenuItem>
+                                        <MenuItem value={"Turksib"}>Turksib</MenuItem>
+                                    </Select> : Ncity === "Akmola" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Akkol"}>Akkol</MenuItem>
+                                        <MenuItem value={"Arshaly"}>Arshaly</MenuItem>
+                                        <MenuItem value={"Astrakhan"}>Astrakhan</MenuItem>
+                                        <MenuItem value={"Atbasar"}>Atbasar</MenuItem>
+                                        <MenuItem value={"Birjan sal"}>Birjan sal</MenuItem>
+                                        <MenuItem value={"Bulandy"}>Bulandy</MenuItem>
+                                        <MenuItem value={"Byrabai"}>Byrabai</MenuItem>
+                                        <MenuItem value={"Celinograd"}>Celinograd</MenuItem>
+                                        <MenuItem value={"Egindikol"}>Egindikol</MenuItem>
+                                        <MenuItem value={"Ereimentay"}>Ereimentay</MenuItem>
+                                        <MenuItem value={"Esil"}>Esil</MenuItem>
+                                        <MenuItem value={"Zhaksy"}>Zhaksy</MenuItem>
+                                        <MenuItem value={"Zharkain"}>Zharkain</MenuItem>
+                                        <MenuItem value={"Kokshetau"}>Kokshetau</MenuItem>
+                                        <MenuItem value={"Korgalzh"}>Korgalzh</MenuItem>
+                                        <MenuItem value={"Sandyktau"}>Sandyktau</MenuItem>
+                                        <MenuItem value={"Shortandy"}>Shortandy</MenuItem>
+                                        <MenuItem value={"Stepnogorsk"}>Stepnogorsk</MenuItem>
+                                        <MenuItem value={"Zerendi"}>Zerendi</MenuItem>
+                                    </Select> : Ncity === "Atyray" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Atyrau"}>Atyrau</MenuItem>
+                                        <MenuItem value={"Inder"}>Inder</MenuItem>
+                                        <MenuItem value={"Isatay"}>Isatay</MenuItem>
+                                        <MenuItem value={"Zhulyoi"}>Zhulyoi</MenuItem>
+                                        <MenuItem value={"Makhambet"}>Makhambet</MenuItem>
+                                        <MenuItem value={"Makat"}>Makat</MenuItem>
+                                        <MenuItem value={"Kurmangazy"}>Kurmangazy</MenuItem>
+                                        <MenuItem value={"Kyzylkogal"}>Kyzylkogal</MenuItem>
+                                    </Select> : Ncity === "Turkistan" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Arys"}>Arys</MenuItem>
+                                        <MenuItem value={"Baydibek"}>Baydibek</MenuItem>
+                                        <MenuItem value={"Maqtaaral"}>Maqtaaral</MenuItem>
+                                        <MenuItem value={"Saryagash"}>Saryagash</MenuItem>
+                                        <MenuItem value={"Kentau"}>Kentau</MenuItem>
+                                        <MenuItem value={"Maktaarak"}>Maktaarak</MenuItem>
+                                        <MenuItem value={"Ordabasy"}>Ordabasy</MenuItem>
+                                        <MenuItem value={"Otyrar"}>Otyrar</MenuItem>
+                                        <MenuItem value={"Kazygurt"}>Kazygurt</MenuItem>
+                                        <MenuItem value={"Sayram"}>Sayram</MenuItem>
+                                        <MenuItem value={"Saryagash"}>Saryagash</MenuItem>
+                                        <MenuItem value={"Shardara"}>Shardara</MenuItem>
+                                        <MenuItem value={"Sozak"}>Sozak</MenuItem>
+                                        <MenuItem value={"Tole Bi"}>Tole Bi</MenuItem>
+                                        <MenuItem value={"Tulkibas"}>Tulkibas</MenuItem>
+                                    </Select> : Ncity === "Kyzylorda" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Aral"}>Aral</MenuItem>
+                                        <MenuItem value={"Baikonur"}>Baikonur</MenuItem>
+                                        <MenuItem value={"Zhalagash"}>Zhalagash</MenuItem>
+                                        <MenuItem value={"Karmakshy"}>Karmakshy</MenuItem>
+                                        <MenuItem value={"Kazaly"}>Kazaly</MenuItem>
+                                        <MenuItem value={"Kyzylorda"}>Kyzylorda</MenuItem>
+                                        <MenuItem value={"Shieli"}>Shieli</MenuItem>
+                                        <MenuItem value={"Syrdariya"}>Syrdariya</MenuItem>
+                                    </Select> : Ncity === "North Kazakhstan" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Aiyrtau"}>Aiyrtau</MenuItem>
+                                        <MenuItem value={"Akzhar"}>Akzhar</MenuItem>
+                                        <MenuItem value={"Akkayin"}>Akkayin</MenuItem>
+                                        <MenuItem value={"Esil"}>Esil</MenuItem>
+                                        <MenuItem value={"Gabit Musirepov"}>Gabit Musirepov</MenuItem>
+                                        <MenuItem value={"Zhambyl"}>Zhambyl</MenuItem>
+                                        <MenuItem value={"Magzhan Zumabaev"}>Magzhan Zumabaev</MenuItem>
+                                        <MenuItem value={"Mamlyut"}>Mamlyut</MenuItem>
+                                        <MenuItem value={"Petropavl"}>Petropavl</MenuItem>
+                                        <MenuItem value={"Kyzylzhar"}>Kyzylzhar</MenuItem>
+                                        <MenuItem value={"Shalakyn"}>Shalakyn</MenuItem>
+                                        <MenuItem value={"Taiynsha"}>Taiynsha</MenuItem>
+                                        <MenuItem value={"Timiryaazev"}>Timiryaazev</MenuItem>
+                                        <MenuItem value={"Ualikhanov"}>Ualikhanov</MenuItem>
+                                    </Select> : Ncity === "East Kazakhstan" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Abay"}>Abay</MenuItem>
+                                        <MenuItem value={"Ayagoz"}>Ayagoz</MenuItem>
+                                        <MenuItem value={"Beskaragay"}>Beskaragay</MenuItem>
+                                        <MenuItem value={"Borodhulikha"}>Borodhulikha</MenuItem>
+                                        <MenuItem value={"Glubokoye"}>Glubokoye</MenuItem>
+                                        <MenuItem value={"Zharma"}>Zharma</MenuItem>
+                                        <MenuItem value={"Katonkaragay"}>Katonkaragay</MenuItem>
+                                        <MenuItem value={"Kokpekti"}>Kokpekti</MenuItem>
+                                        <MenuItem value={"Kurshim"}>Kurshim</MenuItem>
+                                        <MenuItem value={"Kurchatov"}>Kurchatov</MenuItem>
+                                        <MenuItem value={"Oskemen"}>Oskemen</MenuItem>
+                                        <MenuItem value={"Ridder"}>Ridder</MenuItem>
+                                        <MenuItem value={"Semey"}>Semey</MenuItem>
+                                        <MenuItem value={"Shemonaikha"}>Shemonaikha</MenuItem>
+                                        <MenuItem value={"Tarbagatay"}>Tarbagatay</MenuItem>
+                                        <MenuItem value={"Ulan"}>Ulan</MenuItem>
+                                        <MenuItem value={"Urzhar"}>Urzhar</MenuItem>
+                                        <MenuItem value={"Zaysan"}>Zaysan</MenuItem>
+                                        <MenuItem value={"Zyryan"}>Zyryan</MenuItem>
+                                    </Select> : Ncity === "Jambyl" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Bayzak"}>Bayzak</MenuItem>
+                                        <MenuItem value={"Jambyl"}>Jambyl</MenuItem>
+                                        <MenuItem value={"Zhualy"}>Zhualy</MenuItem>
+                                        <MenuItem value={"Merki"}>Merki</MenuItem>
+                                        <MenuItem value={"Moiynkum"}>Moiynkum</MenuItem>
+                                        <MenuItem value={"Korday"}>Korday</MenuItem>
+                                        <MenuItem value={"Sarysu"}>Sarysu</MenuItem>
+                                        <MenuItem value={"Shu"}>Shu</MenuItem>
+                                        <MenuItem value={"Talas"}>Talas</MenuItem>
+                                        <MenuItem value={"Taraz"}>Taraz</MenuItem>
+                                        <MenuItem value={"Turar"}>Turar</MenuItem>
+                                    </Select> : Ncity === "Mangystau" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Aktau"}>Aktau</MenuItem>
+                                        <MenuItem value={"Beyneu"}>Beyneu</MenuItem>
+                                        <MenuItem value={"Zhanaozen"}>Zhanaozen</MenuItem>
+                                        <MenuItem value={"Mangystau"}>Mangystau</MenuItem>
+                                        <MenuItem value={"Munaily"}>Munaily</MenuItem>
+                                        <MenuItem value={"Karakiya"}>Karakiya</MenuItem>
+                                        <MenuItem value={"Tupkaragan"}>Tupkaragan</MenuItem>
+                                    </Select> : <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={Ndistrict}
+                                        label="District"
+                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Altynsarin"}>Altynsarin</MenuItem>
+                                        <MenuItem value={"Amangeldi"}>Amangeldi</MenuItem>
+                                        <MenuItem value={"Arkalyk"}>Arkalyk</MenuItem>
+                                        <MenuItem value={"Auliekol"}>Auliekol</MenuItem>
+                                        <MenuItem value={"Denisov"}>Denisov</MenuItem>
+                                        <MenuItem value={"Fyodorov"}>Fyodorov</MenuItem>
+                                        <MenuItem value={"Zhangeldi"}>Zhangeldi</MenuItem>
+                                        <MenuItem value={"Zhetikara"}>Zhetikara</MenuItem>
+                                        <MenuItem value={"Lisakovsk"}>Lisakovsk</MenuItem>
+                                        <MenuItem value={"Mendykara"}>Mendykara</MenuItem>
+                                        <MenuItem value={"Nauyrzym"}>Nauyrzym</MenuItem>
+                                        <MenuItem value={"Kamysty"}>Kamysty</MenuItem>
+                                        <MenuItem value={"Karabalyk"}>Karabalyk</MenuItem>
+                                        <MenuItem value={"Karasu"}>Karasu</MenuItem>
+                                        <MenuItem value={"Kostanay"}>Kostanay</MenuItem>
+                                        <MenuItem value={"Rudny"}>Rudny</MenuItem>
+                                        <MenuItem value={"Sarykól"}>Sarykól</MenuItem>
+                                        <MenuItem value={"Taran"}>Taran</MenuItem>
+                                        <MenuItem value={"Uzunkol"}>Uzunkol</MenuItem>
+                                    </Select>
+                                }
+
+                            </FormControl>
+                            {/* -------------- District Dropdown END -------------- */}
                         </Col>
-                        <Col>
+                    </Row>
+                    <Row className='mt-3'>
+                    <Col>
                             <Form.Control
                                 type="text"
                                 placeholder="Street"
@@ -412,7 +765,6 @@ const BooksList = ({ getBookId }) => {
                                     </Select>
                                 }
                             </FormControl>
-
                         </Col>
                         {/* ------------ Sub Dropdown END ------------ */}
                     </Row>
@@ -834,7 +1186,7 @@ const BooksList = ({ getBookId }) => {
                                                         <Row className='mt-2 mb-3'>
                                                             <Col>
                                                                 {/* -------------- Main City Dropdown START -------------- */}
-                                                                <FormControl fullWidth className="mt-1">  
+                                                                <FormControl fullWidth className="mt-1">
                                                                     <InputLabel id="demo-simple-select-label">City</InputLabel>
                                                                     <Select
                                                                         labelId="demo-simple-select-label"
