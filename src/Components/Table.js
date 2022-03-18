@@ -48,6 +48,10 @@ const BooksList = ({ getBookId }) => {
     const [epostalCode, setEPostalCode] = useState("");
     const [enotes, setENotes] = useState("");
 
+    // Edit States New District and City
+    const [eNdistrict, setENDistrict] = useState("");
+    const [eNcity, setENCity] = useState("");
+
     const [currentId, setCurrentId] = useState("");
 
     // MUI
@@ -81,6 +85,8 @@ const BooksList = ({ getBookId }) => {
         setEStreet(docSnap.data().street);
         setEDistrict(docSnap.data().district);
         setECity(docSnap.data().city);
+        setENDistrict(docSnap.data().Ndistrict);
+        setENCity(docSnap.data().Ncity);
         setEPostalCode(docSnap.data().postalCode);
         setENotes(docSnap.data().notes);
 
@@ -100,6 +106,8 @@ const BooksList = ({ getBookId }) => {
             street: estreet,
             district: edistrict,
             city: ecity,
+            Ndistrict: eNdistrict,
+            Ncity: eNcity,
             postalCode: epostalCode,
             notes: enotes,
         };
@@ -135,11 +143,11 @@ const BooksList = ({ getBookId }) => {
 
     // ----------------------- Total Search Results Function START -----------------------
 
-    const TotalResults = async () => {
+    // const TotalResults = async () => {
 
-        const dataResults = await BookDataService.Results(companyName, city, district, street, postalCode, category, subCategory);
-        console.log("Results: ", dataResults.docs.length);
-    }
+    //     const dataResults = await BookDataService.Results(companyName, city, district, street, postalCode, category, subCategory);
+    //     console.log("Results: ", dataResults.docs.length);
+    // }
 
     // ----------------------- Total Search Results Function END -----------------------
 
@@ -414,7 +422,7 @@ const BooksList = ({ getBookId }) => {
                     </Row>
                     <Row className='mt-3'>
                         <Col className="d-grid gap-2">
-                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter(); TotalResults() }}>
+                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter()}}>
                                 FILTER
                             </Button>
                         </Col>
@@ -434,9 +442,9 @@ const BooksList = ({ getBookId }) => {
                 </Button>
             </div>
 
-            <div className="d-flex flex-row-reverse">
+            {/* <div className="d-flex flex-row-reverse">
                 <div className="p-2">Results: </div>
-            </div>
+            </div> */}
 
             {/* -------------- Refresh Btn END -------------- */}
 
@@ -475,8 +483,10 @@ const BooksList = ({ getBookId }) => {
                                     <td>{doc.email}</td>
                                     <td>{doc.houseNo}</td>
                                     <td>{doc.street}</td>
-                                    <td>{doc.city}</td>
-                                    <td>{doc.district}</td>
+                                    {/* <td>{doc.city}</td>
+                                    <td>{doc.district}</td> */}
+                                    <td>{doc.Ncity}</td>
+                                    <td>{doc.Ndistrict}</td>
                                     <td>{doc.postalCode}</td>
                                     <td>{doc.notes}</td>
                                     <td>
