@@ -6,11 +6,7 @@ import ProtectedRoute from './Components/ProtectedRoute';
 import { UserAuthContextProvider } from "./Util/UserAuthContext";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import TableTag from './Components/TableTag';
 import FormTag from './Components/FormTag';
-
-import ScrollToTop from "./Components/ScrollToTop"
-
 
 
 function App() {
@@ -28,8 +24,6 @@ function App() {
         </Routes>
 
       </UserAuthContextProvider>
-
-      <ScrollToTop />
       
     </Router>
 

@@ -10,7 +10,6 @@ import { useUserAuth } from '../Util/UserAuthContext';
 import { Link } from "react-router-dom";
 import '../App.css';
 
-
 export default function Home() {
 
   // Handling Logout Field
@@ -24,6 +23,15 @@ export default function Home() {
       console.log(error.message);
     }
   };
+
+  // Scroll to Top Implementation
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
 
   return (
     <div className="home-wrapper">
@@ -39,6 +47,7 @@ export default function Home() {
                 <b>Signed as: </b> {user.email}
               </Navbar.Text>
               <Link to="/form" className="btn btn-primary mr-2 nav-component nav-link-btn">Form</Link>
+              <Button className="btn btn-primary mr-2 nav-component nav-link-btn" onClick={scrollToTop}>UP</Button>
               {/* <Button onClick={handleLogout} className="nav-component"><i className="bi bi-box-arrow-left"></i> Logout</Button> */}
               <i onClick={handleLogout} className="bi bi-box-arrow-left nav-component nav-logout" style={{ fontSize: 22 }}></i>
             </Nav>

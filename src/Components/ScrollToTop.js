@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 // import { BiArrowFromBottom } from 'react-icons/bi';
 import { Button } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ScrollToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -8,8 +9,10 @@ const ScrollToTop = () => {
     const toggleVisibility = () => {
         if (window.pageYOffset > 300) {
             setIsVisible(true);
+            console.log("Offset :" , window.pageYOffset);
         } else {
             setIsVisible(false);
+            console.log("Offset :" , window.pageYOffset);
         }
     };
 

@@ -29,6 +29,14 @@ function FormTag() {
         }
     };
 
+    // Scroll to Top Implementation
+    // const scrollToTop = () => {
+    //     window.scrollTo({
+    //         top: 0,
+    //         behavior: 'smooth',
+    //     });
+    // };
+
     return (
 
         <div className='backdrop'>
@@ -44,6 +52,7 @@ function FormTag() {
                                 <b>Signed as: </b> {user.email}
                             </Navbar.Text>
                             <Link to="/home" className="btn btn-primary mr-2 nav-component nav-link-btn">Home</Link>
+                            {/* <Button className="btn btn-primary mr-2 nav-component nav-link-btn" onClick={scrollToTop}>UP</Button> */}
                             {/* <Button onClick={handleLogout} className="nav-component"><i className="bi bi-box-arrow-left"></i> Logout</Button> */}
                             <i onClick={handleLogout} className="bi bi-box-arrow-left nav-component nav-logout" style={{ fontSize: 22 }}></i>
                         </Nav>
@@ -52,13 +61,13 @@ function FormTag() {
             </Navbar>
             {/* ------------- Navigation Bar END ------------- */}
 
-            
-                <div className='d-flex justify-content-center align-items-center'>
-                    
-                        <AddBook id={bookId} setBookId={setBookId} />
-                    
-                </div>
-            
+
+            <div className='d-flex justify-content-center align-items-center'>
+
+                <AddBook id={bookId} setBookId={setBookId} />
+
+            </div>
+
         </div>
 
     )
