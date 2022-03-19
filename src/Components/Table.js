@@ -51,6 +51,9 @@ const BooksList = ({ getBookId }) => {
 
     const [currentId, setCurrentId] = useState("");
 
+    // State for Total of Results
+    const [resultValue, setResultValue] = useState();
+
     // MUI
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -149,11 +152,12 @@ const BooksList = ({ getBookId }) => {
 
     // ----------------------- Total Search Results Function START -----------------------
 
-    // const TotalResults = async () => {
+    const TotalResults = async () => {
 
-    //     const dataResults = await BookDataService.Results(companyName, city, district, street, postalCode, category, subCategory);
-    //     console.log("Results: ", dataResults.docs.length);
-    // }
+        const dataResults = await BookDataService.Results(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory);
+        setResultValue(dataResults.docs.length)
+        console.log("Results: ", dataResults.docs.length);
+    }
 
     // ----------------------- Total Search Results Function END -----------------------
 
@@ -162,6 +166,7 @@ const BooksList = ({ getBookId }) => {
     // 1) Fetch all books as the page is loaded (run only once)
     useEffect(() => {
         getBooks();
+        console.log("Getting all books from useEffect");
     }, []);
 
     const getBooks = async () => {
@@ -187,7 +192,7 @@ const BooksList = ({ getBookId }) => {
         <div className="table-wrapper">
 
             {/* ------------------- Fiter START -------------------- */}
-            <div>
+            <div className="filter-container">
                 <Form className='p-4 p-sm-4 filter-section filter-form'>
                     <Row>
                         <Col>
@@ -779,7 +784,7 @@ const BooksList = ({ getBookId }) => {
                     </Row>
                     <Row className='mt-3'>
                         <Col className="d-grid gap-2">
-                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter(); handleFilter() }}>
+                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter(); TotalResults() }}>
                                 FILTER
                             </Button>
                         </Col>
@@ -790,6 +795,12 @@ const BooksList = ({ getBookId }) => {
             {/* ------------------- Fiter END -------------------- */}
 
 
+            {/* ------------------- Results Count START -------------------- */}  
+            <div className="d-flex flex-row-reverse results-count">
+                <div className="">Filtered Results: {resultValue}</div>
+            </div>
+            {/* ------------------- Results Count END -------------------- */} 
+
 
             {/* -------------- Refresh Btn START -------------- */}
 
@@ -797,11 +808,7 @@ const BooksList = ({ getBookId }) => {
                 <Button className="table-refresh-btn" variant="dark edit" onClick={getBooks}>
                     <i className="bi bi-arrow-clockwise refresh-icon"></i> Refresh Table
                 </Button>
-            </div>
-
-            {/* <div className="d-flex flex-row-reverse">
-                <div className="p-2">Results: </div>
-            </div> */}
+            </div>            
 
             {/* -------------- Refresh Btn END -------------- */}
 

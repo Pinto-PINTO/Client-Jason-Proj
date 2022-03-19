@@ -56,7 +56,6 @@ class BookDataService {
               if (Ndistrict !== "") {
                      q = query(q, where("Ndistrict", "==", Ndistrict))
               }
-
               if (street !== "") {
                      q = query(q, where("street", "==", street))
               }
@@ -82,37 +81,36 @@ class BookDataService {
 
        // ----------------------- Total Search Results Logic START -----------------------
 
-       // Results = (companyName, city, district, street, postalCode, category, subCategory) => {
+       Results = (companyName, Ncity, Ndistrict, street, postalCode, category, subCategory) => {
 
 
-       //        let r = query(bookCollectionRef)
+              let r = query(bookCollectionRef)
 
-       //        if (companyName !== "") {
-       //               r = query(r, where("name", "==", companyName))
-       //        }
-       //        if (city !== "") {
-       //               r = query(r, where("city", "==", city))
-       //        }
-       //        if (district !== "") {
-       //               r = query(r, where("district", "==", district))
-       //        }
+              if (companyName !== "") {
+                     r = query(r, where("name", "==", companyName))
+              }
+              if (Ncity !== "") {
+                     r = query(r, where("Ncity", "==", Ncity))
+              }
+              if (Ndistrict !== "") {
+                     r = query(r, where("Ndistrict", "==", Ndistrict))
+              }
+              if (street !== "") {
+                     r = query(r, where("street", "==", street))
+              }
 
-       //        if (street !== "") {
-       //               r = query(r, where("street", "==", street))
-       //        }
-
-       //        if (postalCode !== "") {
-       //               r = query(r, where("postalCode", "==", postalCode))
-       //        }
-       //        if (category !== "") {
-       //               r = query(r, where("category", "==", category))
-       //        }
-       //        if (subCategory !== "") {
-       //               r = query(r, where("subCategory", "==", subCategory))
-       //        }
+              if (postalCode !== "") {
+                     r = query(r, where("postalCode", "==", postalCode))
+              }
+              if (category !== "") {
+                     r = query(r, where("category", "==", category))
+              }
+              if (subCategory !== "") {
+                     r = query(r, where("subCategory", "==", subCategory))
+              }
         
-       //        return getDocs(r);
-       // }
+              return getDocs(r);
+       }
 
        // ----------------------- Total Search Results Logic END -----------------------
 
