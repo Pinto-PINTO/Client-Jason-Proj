@@ -53,6 +53,7 @@ const BooksList = ({ getBookId }) => {
 
     // State for Total of Results
     const [resultValue, setResultValue] = useState();
+    const [showResults, setShowResults] = React.useState(false)
 
     // MUI
     const [open, setOpen] = React.useState(false);
@@ -126,10 +127,13 @@ const BooksList = ({ getBookId }) => {
         console.log("LAST DOC ", lastDoc)
 
         setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+
+        // Seting Visibility
+        setShowResults(true);
     }
 
     // Clear Filter Fields
-    const handleFilter = async () => {
+    const handleFilter = () => {
 
         setcompanyName("");
         setNDistrict("");
@@ -138,6 +142,9 @@ const BooksList = ({ getBookId }) => {
         setpostalCode("");
         setCategory("");
         setSubCategory("");
+
+        // Seting Visibility
+        setShowResults(false);
 
     }
 
@@ -158,6 +165,13 @@ const BooksList = ({ getBookId }) => {
         setResultValue(dataResults.docs.length)
         console.log("Results: ", dataResults.docs.length);
     }
+
+    const Results = () => (
+        <div className="d-flex flex-row-reverse results-count">
+            <div>Filtered Results: {resultValue}</div>
+        </div>
+    )
+    
 
     // ----------------------- Total Search Results Function END -----------------------
 
@@ -190,6 +204,14 @@ const BooksList = ({ getBookId }) => {
 
     return (
         <div className="table-wrapper">
+
+            {/* -------------- Filter Clear Btn START -------------- */}
+            <div className="d-flex mt-4">
+                <Button className="table-refresh-btn" variant="dark edit" onClick={handleFilter}>
+                    <i className="bi bi-x-lg refresh-icon"></i> Clear Filter
+                </Button>
+            </div>
+            {/* -------------- Filter Clear Btn END -------------- */}
 
             {/* ------------------- Fiter START -------------------- */}
             <div className="filter-container">
@@ -795,22 +817,19 @@ const BooksList = ({ getBookId }) => {
             {/* ------------------- Fiter END -------------------- */}
 
 
-            {/* ------------------- Results Count START -------------------- */}  
-            <div className="d-flex flex-row-reverse results-count">
-                <div className="">Filtered Results: {resultValue}</div>
-            </div>
-            {/* ------------------- Results Count END -------------------- */} 
+            {/* ------------------- Results Count START -------------------- */}
+            { showResults ? <Results /> : null }
+            {/* ------------------- Results Count END -------------------- */}
 
 
             {/* -------------- Refresh Btn START -------------- */}
-
             <div className="d-flex mb-2">
                 <Button className="table-refresh-btn" variant="dark edit" onClick={getBooks}>
                     <i className="bi bi-arrow-clockwise refresh-icon"></i> Refresh Table
                 </Button>
-            </div>            
-
+            </div>
             {/* -------------- Refresh Btn END -------------- */}
+
 
             {/* -------------- Table START -------------- */}
             {/* <div className="table-responsive"></div> */}
