@@ -20,19 +20,14 @@ const BooksList = ({ getBookId }) => {
     // State to store all book records as an array
     const [books, setBooks] = useState([]);
 
-    // States
-    const [category, setCategory] = useState("");
-    const [subCategory, setSubCategory] = useState("");
-
-
     // Filter States
     const [companyName, setcompanyName] = useState("");
     const [Ndistrict, setNDistrict] = useState("");
     const [Ncity, setNCity] = useState("");
-    // const [city, setcity] = useState("");
-    // const [district, setdistrict] = useState("");
     const [street, setstreet] = useState("");
-    const [postalCode, setpostalCode] = useState("")
+    const [postalCode, setpostalCode] = useState("");
+    const [category, setCategory] = useState("");
+    const [subCategory, setSubCategory] = useState("");
     const [lastDoc, setlastDoc] = useState();
 
 
@@ -130,6 +125,19 @@ const BooksList = ({ getBookId }) => {
         setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     }
 
+    // Clear Filter Fields
+    const handleFilter = async () => {
+
+        setcompanyName("");
+        setNDistrict("");
+        setNCity("");
+        setstreet("");
+        setpostalCode("");
+        setCategory("");
+        setSubCategory("");
+
+    }
+
     const LoadMore = async () => {
         const data = await BookDataService.GetNext(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory, lastDoc);
         setlastDoc(data.docs[data.docs.length - 1])
@@ -177,6 +185,7 @@ const BooksList = ({ getBookId }) => {
 
     return (
         <div className="table-wrapper">
+
             {/* ------------------- Fiter START -------------------- */}
             <div>
                 <Form className='p-4 p-sm-4 filter-section filter-form'>
@@ -555,7 +564,7 @@ const BooksList = ({ getBookId }) => {
                         </Col>
                     </Row>
                     <Row className='mt-3'>
-                    <Col>
+                        <Col>
                             <Form.Control
                                 type="text"
                                 placeholder="Street"
@@ -770,7 +779,7 @@ const BooksList = ({ getBookId }) => {
                     </Row>
                     <Row className='mt-3'>
                         <Col className="d-grid gap-2">
-                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter() }}>
+                            <Button className="table-filter-btn" variant="success" type="button" onClick={(e) => { Filter(); handleFilter() }}>
                                 FILTER
                             </Button>
                         </Col>
