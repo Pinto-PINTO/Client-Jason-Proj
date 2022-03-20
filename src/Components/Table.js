@@ -206,7 +206,7 @@ const BooksList = ({ getBookId }) => {
         <div className="table-wrapper">
 
             {/* -------------- Filter Clear Btn START -------------- */}
-            <div className="d-flex mt-4">
+            <div className="d-flex mt-4 clear-btn-edit">
                 <Button className="table-refresh-btn" variant="dark edit" onClick={handleFilter}>
                     <i className="bi bi-x-lg refresh-icon"></i> Clear Filter
                 </Button>
