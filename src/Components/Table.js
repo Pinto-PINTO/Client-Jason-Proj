@@ -168,7 +168,7 @@ const BooksList = ({ getBookId }) => {
 
     const Results = () => (
         <div className="d-flex flex-row-reverse results-count">
-            <div>Filtered Results: {resultValue}</div>
+            <div className="results-count-edit">{resultValue} results found</div>
         </div>
     )
     

@@ -151,6 +151,12 @@ body {
   margin-top: 0px !important;
 }
 
+.results-count-edit {
+  color: white;
+  font-size: larger;
+  font-weight: 400;
+}
+
 /* .table-wrapper {
   background: white;
 } */
