@@ -135,11 +135,8 @@ const BooksList = ({ getBookId }) => {
     // Clear Filter Fields
     const handleFilter = () => {
 
-        setcompanyName("");
         setNDistrict("");
         setNCity("");
-        setstreet("");
-        setpostalCode("");
         setCategory("");
         setSubCategory("");
 
