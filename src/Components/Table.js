@@ -840,6 +840,7 @@ const BooksList = ({ getBookId }) => {
                             <th>District-before</th>
                             <th>City</th>
                             <th>District</th>
+                            <th>Notes</th>
                             <th>Edit/Delete</th>
                         </tr>
                     </thead>
@@ -853,6 +854,7 @@ const BooksList = ({ getBookId }) => {
                                     <td>{doc.district}</td>
                                     <td>{doc.Ncity}</td>
                                     <td>{doc.Ndistrict}</td>
+                                    <td>{doc.notes}</td>
                                     <td>
                                         <Button
                                             variant="danger"
