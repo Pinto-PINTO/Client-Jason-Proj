@@ -119,8 +119,9 @@ const BooksList = ({ getBookId }) => {
         console.log("New Book: ", newBook);
         await BookDataService.updateBook(currentId, newBook);
 
-        setSelectedOption(null);
-        setSelectedOption2(null);
+        setENotes("");
+        setENCity("");
+        setENDistrict("");
 
     }
 
@@ -843,16 +844,10 @@ const BooksList = ({ getBookId }) => {
                         <tr className="text-center p-2">
                             <th>#</th>
                             <th>Name</th>
-                            <th>Description</th>
-                            <th>Category</th>
-                            <th>S/Category</th>
-                            <th>Contact</th>
-                            <th>Email</th>
-                            <th>H/No</th>
-                            <th>Street</th>
+                            <th>City-before</th>
+                            <th>District-before</th>
                             <th>City</th>
                             <th>District</th>
-                            <th>P/Code</th>
                             <th>Notes</th>
                             <th>Edit/Delete</th>
                         </tr>
@@ -863,18 +858,10 @@ const BooksList = ({ getBookId }) => {
                                 <tr key={doc.id} className="text-center p-2">
                                     <td>{index + 1}</td>
                                     <td>{doc.name}</td>
-                                    <td>{doc.description}</td>
-                                    <td>{doc.category}</td>
-                                    <td>{doc.subCategory}</td>
-                                    <td>{doc.contact}</td>
-                                    <td>{doc.email}</td>
-                                    <td>{doc.houseNo}</td>
-                                    <td>{doc.street}</td>
-                                    {/* <td>{doc.city}</td>
-                                    <td>{doc.district}</td> */}
+                                    <td>{doc.city}</td>
+                                    <td>{doc.district}</td>
                                     <td>{doc.Ncity}</td>
                                     <td>{doc.Ndistrict}</td>
-                                    <td>{doc.postalCode}</td>
                                     <td>{doc.notes}</td>
                                     <td>
                                         <Button
