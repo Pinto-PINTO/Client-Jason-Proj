@@ -141,17 +141,17 @@ const BooksList = ({ getBookId }) => {
     }
 
     // Clear Filter Fields
-    // const handleFilter = () => {
+    const handleFilter = () => {
 
-    //     setNDistrict("");
-    //     setNCity("");
-    //     setCategory("");
-    //     setSubCategory("");
+        setNDistrict("");
+        setNCity("");
+        setCategory("");
+        setSubCategory("");
 
-    //     // Seting Visibility
-    //     setShowResults(false);
+        // Seting Visibility
+        setShowResults(false);
 
-    // }
+    }
 
     const LoadMore = async () => {
         const data = await BookDataService.GetNext(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory, lastDoc);
@@ -211,11 +211,11 @@ const BooksList = ({ getBookId }) => {
         <div className="table-wrapper">
 
             {/* -------------- Filter Clear Btn START -------------- */}
-            {/* <div className="d-flex mt-4 clear-btn-edit">
+            <div className="d-flex mt-4 clear-btn-edit">
                 <Button className="table-refresh-btn" variant="dark edit" onClick={handleFilter}>
                     <i className="bi bi-x-lg refresh-icon"></i> Clear Filter
                 </Button>
-            </div> */}
+            </div>
             {/* -------------- Filter Clear Btn END -------------- */}
 
             {/* ------------------- Fiter START -------------------- */}
@@ -963,7 +963,7 @@ const BooksList = ({ getBookId }) => {
                                                                 <Form.Group className="mb-3" controlId="formBookAuthor">
                                                                     <Form.Label>Sub Category</Form.Label>
 
-                                                                    {selectedOption === "Eat" && (
+                                                                    {ecategory === "Eat" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -977,7 +977,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Goods" && (
+                                                                    {ecategory === "Goods" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -991,7 +991,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Repair and Construction" && (
+                                                                    {ecategory === "Repair and Construction" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1008,7 +1008,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Car Service" && (
+                                                                    {ecategory === "Car Service" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1022,7 +1022,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Medicine" && (
+                                                                    {ecategory === "Medicine" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1034,7 +1034,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Other">Other</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Auto Goods" && (
+                                                                    {ecategory === "Auto Goods" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1048,7 +1048,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Beauty" && (
+                                                                    {ecategory === "Beauty" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1062,7 +1062,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Entertainment" && (
+                                                                    {ecategory === "Entertainment" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1078,7 +1078,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Sports" && (
+                                                                    {ecategory === "Sports" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1090,7 +1090,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Other">Other</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Services" && (
+                                                                    {ecategory === "Services" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1104,7 +1104,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Special Stores" && (
+                                                                    {ecategory === "Special Stores" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1119,7 +1119,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Tourism" && (
+                                                                    {ecategory === "Tourism" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1133,7 +1133,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Others">Others</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption === "Products" && (
+                                                                    {ecategory === "Products" && (
                                                                         <Form.Select
                                                                             aria-label="Sub Categories"
                                                                             value={esubCategory}
@@ -1275,7 +1275,7 @@ const BooksList = ({ getBookId }) => {
                                                                 <Form.Group className="mb-3" controlId="formBookAuthor">
                                                                     <Form.Label>District</Form.Label>
 
-                                                                    {selectedOption2 === "Almaty" && (
+                                                                    {eNcity === "Almaty" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1302,7 +1302,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Uygur">Uygur</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Nur-Sultan" && (
+                                                                    {eNcity === "Nur-Sultan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1315,7 +1315,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Tselinogradsky">Tselinogradsky</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Shymkent" && (
+                                                                    {eNcity === "Shymkent" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1327,7 +1327,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Qaratay">Qaratay</option>+
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Aktobe" && (
+                                                                    {eNcity === "Aktobe" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1348,7 +1348,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Yrgyz">Yrgyz</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Taraz" && (
+                                                                    {eNcity === "Taraz" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1357,7 +1357,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="-">-</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Karagandy" && (
+                                                                    {eNcity === "Karagandy" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1383,7 +1383,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Ulytau">Ulytau</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Pavlodar" && (
+                                                                    {eNcity === "Pavlodar" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1403,7 +1403,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Uspen">Uspen</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Almaty Qalasy" && (
+                                                                    {eNcity === "Almaty Qalasy" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1419,7 +1419,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Turksib">Turksib</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Akmola" && (
+                                                                    {eNcity === "Akmola" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1446,7 +1446,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Zerendi">Zerendi</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Atyray" && (
+                                                                    {eNcity === "Atyray" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1462,7 +1462,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Kyzylkogal">Kyzylkogal</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Turkistan" && (
+                                                                    {eNcity === "Turkistan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1485,7 +1485,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Tulkibas">Tulkibas</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Kyzylorda" && (
+                                                                    {eNcity === "Kyzylorda" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1501,7 +1501,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Syrdariya">Syrdariya</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "North Kazakhstan" && (
+                                                                    {eNcity === "North Kazakhstan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1523,7 +1523,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Ualikhanov">Ualikhanov</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "East Kazakhstan" && (
+                                                                    {eNcity === "East Kazakhstan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1550,7 +1550,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Zyryan">Zyryan</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Jambyl" && (
+                                                                    {eNcity === "Jambyl" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1569,7 +1569,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Turar">Turar</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Mangystau" && (
+                                                                    {eNcity === "Mangystau" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
@@ -1584,7 +1584,7 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Tupkaragan">Tupkaragan</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {selectedOption2 === "Kostanay" && (
+                                                                    {eNcity === "Kostanay" && (
                                                                         <Form.Select
                                                                             aria-label="District"
                                                                             value={eNdistrict}
