@@ -47,10 +47,11 @@ const BooksList = ({ getBookId }) => {
     const [esubCategory, setESubCategory] = useState("");
     const [ehouseNo, setEHouseNo] = useState("");
     const [estreet, setEStreet] = useState("");
-    // const [edistrict, setEDistrict] = useState("");
-    // const [ecity, setECity] = useState("");
+    const [edistrict, setEDistrict] = useState("");
+    const [ecity, setECity] = useState("");
     const [epostalCode, setEPostalCode] = useState("");
     const [enotes, setENotes] = useState("");
+
     const [eNdistrict, setENDistrict] = useState("");
     const [eNcity, setENCity] = useState("");
 
@@ -89,8 +90,8 @@ const BooksList = ({ getBookId }) => {
         setESubCategory(docSnap.data().subCategory);
         setEHouseNo(docSnap.data().houseNo);
         setEStreet(docSnap.data().street);
-        setENDistrict(docSnap.data().Ndistrict);
-        setENCity(docSnap.data().Ncity);
+        setEDistrict(docSnap.data().district);
+        setECity(docSnap.data().city);
         setEPostalCode(docSnap.data().postalCode);
         setENotes(docSnap.data().notes);
 
@@ -108,8 +109,8 @@ const BooksList = ({ getBookId }) => {
             subCategory: esubCategory,
             houseNo: ehouseNo,
             street: estreet,
-            Ndistrict: eNdistrict,
-            Ncity: eNcity,
+            district: edistrict,
+            city: ecity,
             postalCode: epostalCode,
             notes: enotes,
         };
@@ -870,10 +871,10 @@ const BooksList = ({ getBookId }) => {
                                     <td>{doc.email}</td>
                                     <td>{doc.houseNo}</td>
                                     <td>{doc.street}</td>
-                                    {/* <td>{doc.city}</td>
-                                    <td>{doc.district}</td> */}
-                                    <td>{doc.Ncity}</td>
-                                    <td>{doc.Ndistrict}</td>
+                                    <td>{doc.city}</td>
+                                    <td>{doc.district}</td>
+                                    {/* <td>{doc.Ncity}</td>
+                                    <td>{doc.Ndistrict}</td> */}
                                     <td>{doc.postalCode}</td>
                                     <td>{doc.notes}</td>
                                     <td>
@@ -1243,8 +1244,8 @@ const BooksList = ({ getBookId }) => {
                                                                     <Form.Label>City</Form.Label>
                                                                     <Form.Select
                                                                         aria-label="City"
-                                                                        value={eNcity}
-                                                                        onChange={(e) => { setENCity(e.target.value); setSelectedOption2(e.target.value) }}
+                                                                        value={ecity}
+                                                                        onChange={(e) => { setECity(e.target.value); setSelectedOption2(e.target.value) }}
                                                                     >
                                                                         <option value="Almaty">Almaty</option>
                                                                         <option value="Nur-Sultan">Nur-Sultan</option>
@@ -1275,11 +1276,11 @@ const BooksList = ({ getBookId }) => {
                                                                 <Form.Group className="mb-3" controlId="formBookAuthor">
                                                                     <Form.Label>District</Form.Label>
 
-                                                                    {eNcity === "Almaty" && (
+                                                                    {ecity === "Almaty" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Alakol">Alakol</option>
                                                                             <option value="Aksu">Aksu</option>
@@ -1302,24 +1303,24 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Uygur">Uygur</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Nur-Sultan" && (
+                                                                    {ecity === "Nur-Sultan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
-                                                                            <option value="Almaty">Almaty</option>
-                                                                            <option value="Esil">Esil</option>
-                                                                            <option value="Saryarqa">Saryarqa</option>
-                                                                            <option value="Baikonyr">Baikonyr</option>
-                                                                            <option value="Tselinogradsky">Tselinogradsky</option>
+                                                                            <option value="Almaty district">Almaty district</option>
+                                                                            <option value="Esil district">Esil district</option>
+                                                                            <option value="Saryarka district">Saryarka district</option>
+                                                                            <option value="Baikonyr district">Baikonyr district</option>
+                                                                            <option value="Tselinogradsky district">Tselinogradsky district</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Shymkent" && (
+                                                                    {ecity === "Shymkent" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Abai">Abai</option>
                                                                             <option value="Al Farabi">Al Farabi</option>
@@ -1327,11 +1328,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Qaratay">Qaratay</option>+
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Aktobe" && (
+                                                                    {ecity === "Aktobe" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Ayteke B">Ayteke B</option>
                                                                             <option value="Alga">Alga</option>
@@ -1348,20 +1349,20 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Yrgyz">Yrgyz</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Taraz" && (
+                                                                    {ecity === "Taraz" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="-">-</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Karagandy" && (
+                                                                    {ecity === "Karagandy" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Abay">Abay</option>
                                                                             <option value="Aktogav">Aktogav</option>
@@ -1383,11 +1384,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Ulytau">Ulytau</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Pavlodar" && (
+                                                                    {ecity === "Pavlodar" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Akkuli">Akkuli</option>
                                                                             <option value="Aksu">Aksu</option>
@@ -1403,11 +1404,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Uspen">Uspen</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Almaty Qalasy" && (
+                                                                    {ecity === "Almaty Qalasy" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Alatau">Alatau</option>
                                                                             <option value="Almaly">Almaly</option>
@@ -1419,11 +1420,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Turksib">Turksib</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Akmola" && (
+                                                                    {ecity === "Akmola" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Akkol">Akkol</option>
                                                                             <option value="Arshaly">Arshaly</option>
@@ -1446,11 +1447,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Zerendi">Zerendi</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Atyray" && (
+                                                                    {ecity === "Atyray" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Atyrau">Atyrau</option>
                                                                             <option value="Inder">Inder</option>
@@ -1462,11 +1463,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Kyzylkogal">Kyzylkogal</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Turkistan" && (
+                                                                    {ecity === "Turkistan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Arys">Arys</option>
                                                                             <option value="Baydibek">Baydibek</option>
@@ -1485,11 +1486,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Tulkibas">Tulkibas</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Kyzylorda" && (
+                                                                    {ecity === "Kyzylorda" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Aral">Aral</option>
                                                                             <option value="Baikonur">Baikonur</option>
@@ -1501,11 +1502,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Syrdariya">Syrdariya</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "North Kazakhstan" && (
+                                                                    {ecity === "North Kazakhstan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Aiyrtau">Aiyrtau</option>
                                                                             <option value="Akzhar">Akzhar</option>
@@ -1523,11 +1524,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Ualikhanov">Ualikhanov</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "East Kazakhstan" && (
+                                                                    {ecity === "East Kazakhstan" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Abay">Abay</option>
                                                                             <option value="Ayagoz">Ayagoz</option>
@@ -1550,11 +1551,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Zyryan">Zyryan</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Jambyl" && (
+                                                                    {ecity === "Jambyl" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Bayzak">Bayzak</option>
                                                                             <option value="Jambyl">Jambyl</option>
@@ -1569,11 +1570,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Turar">Turar</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Mangystau" && (
+                                                                    {ecity === "Mangystau" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Aktau">Aktau</option>
                                                                             <option value="Beyneu">Beyneu</option>
@@ -1584,11 +1585,11 @@ const BooksList = ({ getBookId }) => {
                                                                             <option value="Tupkaragan">Tupkaragan</option>
                                                                         </Form.Select>
                                                                     )}
-                                                                    {eNcity === "Kostanay" && (
+                                                                    {ecity === "Kostanay" && (
                                                                         <Form.Select
                                                                             aria-label="District"
-                                                                            value={eNdistrict}
-                                                                            onChange={(e) => { setENDistrict(e.target.value) }}
+                                                                            value={edistrict}
+                                                                            onChange={(e) => { setEDistrict(e.target.value) }}
                                                                         >
                                                                             <option value="Altynsarin">Altynsarin</option>
                                                                             <option value="Amangeldi">Amangeldi</option>
