@@ -29,8 +29,8 @@ const BooksList = ({ getBookId }) => {
 
     // Filter States
     const [companyName, setcompanyName] = useState("");
-    const [Ndistrict, setNDistrict] = useState("");
-    const [Ncity, setNCity] = useState("");
+    const [district, setDistrict] = useState("");
+    const [city, setCity] = useState("");
     const [street, setstreet] = useState("");
     const [postalCode, setpostalCode] = useState("");
     const [category, setCategory] = useState("");
@@ -52,8 +52,8 @@ const BooksList = ({ getBookId }) => {
     const [epostalCode, setEPostalCode] = useState("");
     const [enotes, setENotes] = useState("");
 
-    const [eNdistrict, setENDistrict] = useState("");
-    const [eNcity, setENCity] = useState("");
+    // const [eNdistrict, setENDistrict] = useState("");
+    // const [eNcity, setENCity] = useState("");
 
     const [currentId, setCurrentId] = useState("");
 
@@ -129,7 +129,7 @@ const BooksList = ({ getBookId }) => {
     //Filter Functions
     const Filter = async () => {
 
-        const data = await BookDataService.Filter(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory);
+        const data = await BookDataService.Filter(companyName, city, district, street, postalCode, category, subCategory);
         console.log(data.docs);
         // console.log("Results: ", data.docs.length);
         setlastDoc(data.docs[data.docs.length - 1])
@@ -144,8 +144,8 @@ const BooksList = ({ getBookId }) => {
     // Clear Filter Fields
     const handleFilter = () => {
 
-        setNDistrict("");
-        setNCity("");
+        setDistrict("");
+        setCity("");
         setCategory("");
         setSubCategory("");
 
@@ -155,7 +155,7 @@ const BooksList = ({ getBookId }) => {
     }
 
     const LoadMore = async () => {
-        const data = await BookDataService.GetNext(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory, lastDoc);
+        const data = await BookDataService.GetNext(companyName, city, district, street, postalCode, category, subCategory, lastDoc);
         setlastDoc(data.docs[data.docs.length - 1])
         //setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
         setBooks((books) => [...books, ...data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))])
@@ -167,7 +167,7 @@ const BooksList = ({ getBookId }) => {
 
     const TotalResults = async () => {
 
-        const dataResults = await BookDataService.Results(companyName, Ncity, Ndistrict, street, postalCode, category, subCategory);
+        const dataResults = await BookDataService.Results(companyName, city, district, street, postalCode, category, subCategory);
         setResultValue(dataResults.docs.length)
         console.log("Results: ", dataResults.docs.length);
     }
@@ -239,9 +239,9 @@ const BooksList = ({ getBookId }) => {
                                 <Select
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
-                                    value={Ncity}
+                                    value={city}
                                     label="City"
-                                    onChange={(e) => { setNCity(e.target.value) }}
+                                    onChange={(e) => { setCity(e.target.value) }}
                                 >
                                     <MenuItem value={"Almaty"}>Almaty</MenuItem>
                                     <MenuItem value={"Nur-Sultan"}>Nur-Sultan</MenuItem>
@@ -270,12 +270,12 @@ const BooksList = ({ getBookId }) => {
                             <FormControl fullWidth className="mt-1">
                                 <InputLabel id="demo-simple-select-label">District</InputLabel>
                                 {
-                                    Ncity === "Almaty" ? <Select
+                                    city === "Almaty" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Alakol"}>Alakol</MenuItem>
                                         <MenuItem value={"Aksu"}>Aksu</MenuItem>
@@ -296,35 +296,35 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Talgar"}>Talgar</MenuItem>
                                         <MenuItem value={"Tekeli"}>Tekeli</MenuItem>
                                         <MenuItem value={"Uygur"}>Uygur</MenuItem>
-                                    </Select> : Ncity === "Nur-Sultan" ? <Select
+                                    </Select> : city === "Nur-Sultan" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
-                                        <MenuItem value={"Almaty"}>Almaty</MenuItem>
-                                        <MenuItem value={"Esil"}>Esil</MenuItem>
-                                        <MenuItem value={"Saryarqa"}>Saryarqa</MenuItem>
-                                        <MenuItem value={"Baikonyr"}>Baikonyr</MenuItem>
-                                        <MenuItem value={"Tselinogradsky"}>Tselinogradsky</MenuItem>
-                                    </Select> : Ncity === "Shymkent" ? <Select
+                                        <MenuItem value={"Almaty district"}>Almaty district</MenuItem>
+                                        <MenuItem value={"Esil district"}>Esil district</MenuItem>
+                                        <MenuItem value={"Saryarqa district"}>Saryarqa district</MenuItem>
+                                        <MenuItem value={"Baikonyr district"}>Baikonyr district</MenuItem>
+                                        <MenuItem value={"Tselinogradsky district"}>Tselinogradsky district</MenuItem>
+                                    </Select> : city === "Shymkent" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Abai"}>Abai</MenuItem>
                                         <MenuItem value={"Al Farabi"}>Al Farabi</MenuItem>
                                         <MenuItem value={"Enbekshi"}>Enbekshi</MenuItem>
                                         <MenuItem value={"Qaratay"}>Qaratay</MenuItem>
-                                    </Select> : Ncity === "Aktobe" ? <Select
+                                    </Select> : city === "Aktobe" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Ayteke B"}>Ayteke B</MenuItem>
                                         <MenuItem value={"Alga"}>Alga</MenuItem>
@@ -339,20 +339,20 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Shalkar"}>Shalkar</MenuItem>
                                         <MenuItem value={"Temir"}>Temir</MenuItem>
                                         <MenuItem value={"Yrgyz"}>Yrgyz</MenuItem>
-                                    </Select> : Ncity === "Taraz" ? <Select
+                                    </Select> : city === "Taraz" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"-"}>-</MenuItem>
-                                    </Select> : Ncity === "Karagandy" ? <Select
+                                    </Select> : city === "Karagandy" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Abay"}>Abay</MenuItem>
                                         <MenuItem value={"Aktogav"}>Aktogav</MenuItem>
@@ -372,12 +372,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Shet"}>Shet</MenuItem>
                                         <MenuItem value={"Temirtau"}>Temirtau</MenuItem>
                                         <MenuItem value={"Ulytau"}>Ulytau</MenuItem>
-                                    </Select> : Ncity === "Pavlodar" ? <Select
+                                    </Select> : city === "Pavlodar" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Akkuli"}>Akkuli</MenuItem>
                                         <MenuItem value={"Aksu"}>Aksu</MenuItem>
@@ -391,12 +391,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Sharbakty"}>Sharbakty</MenuItem>
                                         <MenuItem value={"Kashyr"}>Kashyr</MenuItem>
                                         <MenuItem value={"Uspen"}>Uspen</MenuItem>
-                                    </Select> : Ncity === "Almaty Qalasy" ? <Select
+                                    </Select> : city === "Almaty Qalasy" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Alatau"}>Alatau</MenuItem>
                                         <MenuItem value={"Almaly"}>Almaly</MenuItem>
@@ -406,12 +406,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Medau"}>Medau</MenuItem>
                                         <MenuItem value={"Nauryzbay"}>Nauryzbay</MenuItem>
                                         <MenuItem value={"Turksib"}>Turksib</MenuItem>
-                                    </Select> : Ncity === "Akmola" ? <Select
+                                    </Select> : city === "Akmola" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Akkol"}>Akkol</MenuItem>
                                         <MenuItem value={"Arshaly"}>Arshaly</MenuItem>
@@ -432,12 +432,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Shortandy"}>Shortandy</MenuItem>
                                         <MenuItem value={"Stepnogorsk"}>Stepnogorsk</MenuItem>
                                         <MenuItem value={"Zerendi"}>Zerendi</MenuItem>
-                                    </Select> : Ncity === "Atyray" ? <Select
+                                    </Select> : city === "Atyray" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Atyrau"}>Atyrau</MenuItem>
                                         <MenuItem value={"Inder"}>Inder</MenuItem>
@@ -447,12 +447,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Makat"}>Makat</MenuItem>
                                         <MenuItem value={"Kurmangazy"}>Kurmangazy</MenuItem>
                                         <MenuItem value={"Kyzylkogal"}>Kyzylkogal</MenuItem>
-                                    </Select> : Ncity === "Turkistan" ? <Select
+                                    </Select> : city === "Turkistan" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Arys"}>Arys</MenuItem>
                                         <MenuItem value={"Baydibek"}>Baydibek</MenuItem>
@@ -469,12 +469,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Sozak"}>Sozak</MenuItem>
                                         <MenuItem value={"Tole Bi"}>Tole Bi</MenuItem>
                                         <MenuItem value={"Tulkibas"}>Tulkibas</MenuItem>
-                                    </Select> : Ncity === "Kyzylorda" ? <Select
+                                    </Select> : city === "Kyzylorda" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Aral"}>Aral</MenuItem>
                                         <MenuItem value={"Baikonur"}>Baikonur</MenuItem>
@@ -484,12 +484,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Kyzylorda"}>Kyzylorda</MenuItem>
                                         <MenuItem value={"Shieli"}>Shieli</MenuItem>
                                         <MenuItem value={"Syrdariya"}>Syrdariya</MenuItem>
-                                    </Select> : Ncity === "North Kazakhstan" ? <Select
+                                    </Select> : city === "North Kazakhstan" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Aiyrtau"}>Aiyrtau</MenuItem>
                                         <MenuItem value={"Akzhar"}>Akzhar</MenuItem>
@@ -505,12 +505,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Taiynsha"}>Taiynsha</MenuItem>
                                         <MenuItem value={"Timiryaazev"}>Timiryaazev</MenuItem>
                                         <MenuItem value={"Ualikhanov"}>Ualikhanov</MenuItem>
-                                    </Select> : Ncity === "East Kazakhstan" ? <Select
+                                    </Select> : city === "East Kazakhstan" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Abay"}>Abay</MenuItem>
                                         <MenuItem value={"Ayagoz"}>Ayagoz</MenuItem>
@@ -531,12 +531,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Urzhar"}>Urzhar</MenuItem>
                                         <MenuItem value={"Zaysan"}>Zaysan</MenuItem>
                                         <MenuItem value={"Zyryan"}>Zyryan</MenuItem>
-                                    </Select> : Ncity === "Jambyl" ? <Select
+                                    </Select> : city === "Jambyl" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Bayzak"}>Bayzak</MenuItem>
                                         <MenuItem value={"Jambyl"}>Jambyl</MenuItem>
@@ -549,12 +549,12 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Talas"}>Talas</MenuItem>
                                         <MenuItem value={"Taraz"}>Taraz</MenuItem>
                                         <MenuItem value={"Turar"}>Turar</MenuItem>
-                                    </Select> : Ncity === "Mangystau" ? <Select
+                                    </Select> : city === "Mangystau" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Aktau"}>Aktau</MenuItem>
                                         <MenuItem value={"Beyneu"}>Beyneu</MenuItem>
@@ -566,9 +566,9 @@ const BooksList = ({ getBookId }) => {
                                     </Select> : <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
-                                        value={Ndistrict}
+                                        value={district}
                                         label="District"
-                                        onChange={(e) => { setNDistrict(e.target.value) }}
+                                        onChange={(e) => { setDistrict(e.target.value) }}
                                     >
                                         <MenuItem value={"Altynsarin"}>Altynsarin</MenuItem>
                                         <MenuItem value={"Amangeldi"}>Amangeldi</MenuItem>

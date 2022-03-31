@@ -42,7 +42,7 @@ class BookDataService {
 
        // ------------- Filter Logic START -------------
 
-       Filter = (companyName, Ncity, Ndistrict, street, postalCode, category, subCategory) => {
+       Filter = (companyName, city, district, street, postalCode, category, subCategory) => {
 
 
               let q = query(bookCollectionRef)
@@ -50,11 +50,11 @@ class BookDataService {
               if (companyName !== "") {
                      q = query(q, where("name", "==", companyName))
               }
-              if (Ncity !== "") {
-                     q = query(q, where("Ncity", "==", Ncity))
+              if (city !== "") {
+                     q = query(q, where("city", "==", city))
               }
-              if (Ndistrict !== "") {
-                     q = query(q, where("Ndistrict", "==", Ndistrict))
+              if (district !== "") {
+                     q = query(q, where("district", "==", district))
               }
               if (street !== "") {
                      q = query(q, where("street", "==", street))
@@ -81,7 +81,7 @@ class BookDataService {
 
        // ----------------------- Total Search Results Logic START -----------------------
 
-       Results = (companyName, Ncity, Ndistrict, street, postalCode, category, subCategory) => {
+       Results = (companyName, city, district, street, postalCode, category, subCategory) => {
 
 
               let r = query(bookCollectionRef)
@@ -89,11 +89,11 @@ class BookDataService {
               if (companyName !== "") {
                      r = query(r, where("name", "==", companyName))
               }
-              if (Ncity !== "") {
-                     r = query(r, where("Ncity", "==", Ncity))
+              if (city !== "") {
+                     r = query(r, where("Ncity", "==", city))
               }
-              if (Ndistrict !== "") {
-                     r = query(r, where("Ndistrict", "==", Ndistrict))
+              if (district !== "") {
+                     r = query(r, where("Ndistrict", "==", district))
               }
               if (street !== "") {
                      r = query(r, where("street", "==", street))
@@ -117,18 +117,18 @@ class BookDataService {
 
 
 
-       GetNext = (companyName, Ncity, Ndistrict, street, postalCode, category, subCategory, lastDoc) => {
+       GetNext = (companyName, city, district, street, postalCode, category, subCategory, lastDoc) => {
 
               let q = query(bookCollectionRef)
 
               if (companyName !== "") {
                      q = query(q, where("name", "==", companyName))
               }
-              if (Ncity !== "") {
-                     q = query(q, where("Ncity", "==", Ncity))
+              if (city !== "") {
+                     q = query(q, where("Ncity", "==", city))
               }
-              if (Ndistrict !== "") {
-                     q = query(q, where("Ndistrict", "==", Ndistrict))
+              if (district !== "") {
+                     q = query(q, where("Ndistrict", "==", district))
               }
 
               if (street !== "") {
