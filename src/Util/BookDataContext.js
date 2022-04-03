@@ -90,10 +90,10 @@ class BookDataService {
                      r = query(r, where("name", "==", companyName))
               }
               if (city !== "") {
-                     r = query(r, where("Ncity", "==", city))
+                     r = query(r, where("city", "==", city))
               }
               if (district !== "") {
-                     r = query(r, where("Ndistrict", "==", district))
+                     r = query(r, where("district", "==", district))
               }
               if (street !== "") {
                      r = query(r, where("street", "==", street))
@@ -125,10 +125,10 @@ class BookDataService {
                      q = query(q, where("name", "==", companyName))
               }
               if (city !== "") {
-                     q = query(q, where("Ncity", "==", city))
+                     q = query(q, where("city", "==", city))
               }
               if (district !== "") {
-                     q = query(q, where("Ndistrict", "==", district))
+                     q = query(q, where("district", "==", district))
               }
 
               if (street !== "") {
@@ -144,7 +144,6 @@ class BookDataService {
               if (subCategory !== "") {
                      q = query(q, where("subCategory", "==", subCategory))
               }
-
 
               q = query(q, startAfter(lastDoc), limit(20));
 
