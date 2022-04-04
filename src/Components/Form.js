@@ -508,11 +508,11 @@ const AddBook = ({ id, setBookId }) => {
                                         label="District"
                                         onChange={(e) => { setDistrict(e.target.value) }}
                                     >
-                                        <MenuItem value={"Almaty"}>Almaty</MenuItem>
-                                        <MenuItem value={"Esil"}>Esil</MenuItem>
-                                        <MenuItem value={"Saryarqa"}>Saryarqa</MenuItem>
-                                        <MenuItem value={"Baikonyr"}>Baikonyr</MenuItem>
-                                        <MenuItem value={"Tselinogradsky"}>Tselinogradsky</MenuItem>
+                                        <MenuItem value={"Almaty district"}>Almaty district</MenuItem>
+                                        <MenuItem value={"Esil district"}>Esil district</MenuItem>
+                                        <MenuItem value={"Saryarka district"}>Saryarka district</MenuItem>
+                                        <MenuItem value={"Baikonyr district"}>Baikonyr district</MenuItem>
+                                        <MenuItem value={"Tselinogradsky district"}>Tselinogradsky district</MenuItem>
                                     </Select> : city === "Shymkent" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"

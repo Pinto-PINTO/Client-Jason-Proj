@@ -305,7 +305,7 @@ const BooksList = ({ getBookId }) => {
                                     >
                                         <MenuItem value={"Almaty district"}>Almaty district</MenuItem>
                                         <MenuItem value={"Esil district"}>Esil district</MenuItem>
-                                        <MenuItem value={"Saryarqa district"}>Saryarqa district</MenuItem>
+                                        <MenuItem value={"Saryarka district"}>Saryarka district</MenuItem>
                                         <MenuItem value={"Baikonyr district"}>Baikonyr district</MenuItem>
                                         <MenuItem value={"Tselinogradsky district"}>Tselinogradsky district</MenuItem>
                                     </Select> : city === "Shymkent" ? <Select
