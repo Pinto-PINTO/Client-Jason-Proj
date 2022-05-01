@@ -765,6 +765,19 @@ const BooksList = ({ getBookId }) => {
                                         <MenuItem value={"Fitness Centers"}>Fitness Centers</MenuItem>
                                         <MenuItem value={"Sections"}>Sections</MenuItem>
                                         <MenuItem value={"Other"}>Other</MenuItem>
+                                    </Select> : category === "Services" ? <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        value={subCategory}
+                                        label="Sub Category"
+                                        onChange={(e) => { setSubCategory(e.target.value) }}
+                                    >
+                                        <MenuItem value={"Household"}>Household</MenuItem>
+                                        <MenuItem value={"Transport"}>Transport</MenuItem>
+                                        <MenuItem value={"Finance"}>Finance</MenuItem>
+                                        <MenuItem value={"Real Estate"}>Real Estate</MenuItem>
+                                        <MenuItem value={"Legal services"}>Legal services</MenuItem>
+                                        <MenuItem value={"Others"}>Others</MenuItem>
                                     </Select> : category === "Special Stores" ? <Select
                                         labelId="demo-simple-select-label"
                                         id="demo-simple-select"
